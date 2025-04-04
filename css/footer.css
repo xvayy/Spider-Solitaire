@@ -1,0 +1,11 @@
+.footer__items {
+    font-size: 13px;
+    font-weight: 200;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 90px;
+}
