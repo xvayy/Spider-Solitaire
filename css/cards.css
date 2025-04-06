@@ -1,0 +1,35 @@
+.card__slots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 50px 0;
+    overflow: scroll;
+}
+
+.card__slot {
+    height: 150px;
+    width: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid red;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.card__slot .card {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    height: 150px;
+    width: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid red;
+
+    background-image: url("./img/spade.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
