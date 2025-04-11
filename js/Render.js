@@ -1,13 +1,13 @@
 export class Renderer {
-    constructor(game, containerId) {
+    constructor(game, containerId, subcontainerId) {
         this.game = game;
         this.container = document.getElementById(containerId);
+        this.subcontainer = document.getElementById(subcontainerId);
     }
 
     render() {
         this.container.innerHTML = '';
-        
-        
+        this.subcontainer.innerHTML = '';
 
         // Рендеримо колонки з картами
         const columnsDiv = document.createElement('div');
@@ -32,6 +32,23 @@ export class Renderer {
         });
         this.container.appendChild(columnsDiv);
 
+
+        // Зібрані послідовності
+        const sequencesDiv = document.createElement('div');
+        sequencesDiv.className = 'completed-sequences';
+        for (let i = 0; i < this.game.completedSequences; i++) {
+            const sequenceDiv = document.createElement('div');
+            sequenceDiv.className = 'sequence';
+            const suit = this.game.completedSequenceSuits[i] || 'spades';
+            sequenceDiv.dataset.suit = suit;
+            sequenceDiv.dataset.rank = 'K';
+            sequenceDiv.innerText = 'K';
+            console.log(suit);
+            sequenceDiv.style.backgroundImage = `url(/img/${suit}.png)`;
+            sequencesDiv.appendChild(sequenceDiv);
+        }
+        this.subcontainer.appendChild(sequencesDiv);
+
         // Рендеримо сток
         const stockDiv = document.createElement('div');
         stockDiv.className = 'stock';
@@ -40,7 +57,8 @@ export class Renderer {
             additionalDeckDiv.className = 'additional-deck';
             stockDiv.appendChild(additionalDeckDiv);
         }
-        // stockDiv.innerText = `Stock: ${this.game.stock.cards.length}`;
-        this.container.appendChild(stockDiv);
+        this.subcontainer.appendChild(stockDiv);
+
+        
     }
 }

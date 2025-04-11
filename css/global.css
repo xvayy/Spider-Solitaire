@@ -12,16 +12,21 @@ body {
     display: flex;
     flex-direction: column;
 }
-  
-.game-wrapper {
+
+main {
     flex-grow: 1;
     background-color: green;
+}
+
+.cards-wrapper {
+    height: 100%;
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-#game {
+#cards {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -29,7 +34,19 @@ body {
     padding: 20px;
 }
 
+#additional-cards {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    justify-content: space-between;
+    max-width: 1310px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+    width: 100%;
+}
+
 .container {
     max-width: 1900px;
-    margin: 0 auto;
+    margin: auto;
 }

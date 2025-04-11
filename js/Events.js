@@ -1,4 +1,3 @@
-// js/events.js
 import { Rules } from './Rules.js';
 
 export class EventHandler {
@@ -8,8 +7,10 @@ export class EventHandler {
     }
 
     init() {
-        this.container = document.getElementById('game');
-        this.container.addEventListener('click', this.handleClick.bind(this));
+        this.container = document.getElementById('cards');
+        this.subcontainer = document.getElementById('additional-cards');
+
+        this.subcontainer.addEventListener('click', this.handleClick.bind(this));
         this.container.addEventListener('dragstart', this.handleDragStart.bind(this));
         this.container.addEventListener('dragover', this.handleDragOver.bind(this));
         this.container.addEventListener('drop', this.handleDrop.bind(this));
@@ -48,7 +49,24 @@ export class EventHandler {
             const toColumnIndex = parseInt(toColumnDiv.dataset.index);
             const fromColumn = this.game.columns[data.fromColumn];
             const toColumn = this.game.columns[toColumnIndex];
-            if (Rules.moveCards(fromColumn, toColumn, data.cardIndex, this.game)) {
+
+            // Отримуємо карти, які перетягуємо
+            const cardsToMove = fromColumn.cards.slice(data.cardIndex);
+            const bottomCard = cardsToMove[0]; // Нижня карта перетягуваної групи
+
+            // Перевіряємо валідність цільової карти
+            let isValidTarget = false;
+            if (toColumn.cards.length === 0) {
+                // Порожня колонка — завжди валідна ціль
+                isValidTarget = true;
+            } else {
+                const targetCard = toColumn.getTopCard(); // Верхня карта цільової колонки
+                // Перевіряємо, чи нижня карта перетягуваної групи на 1 менша за цільову
+                isValidTarget = Rules.canMoveCard(bottomCard, targetCard);
+            }
+
+            // Виконуємо хід, якщо ціль валідна і карти утворюють послідовність
+            if (isValidTarget && Rules.moveCards(fromColumn, toColumn, data.cardIndex, this.game)) {
                 this.renderer.render();
                 if (this.game.completedSequences === 8) {
                     alert('You won!');

@@ -1,4 +1,3 @@
-// js/game.js
 import { Card } from './Card.js';
 import { Column } from './Column.js';
 import { Stock } from './Stock.js';
@@ -9,6 +8,7 @@ export class Game {
         this.columns = Array(10).fill().map(() => new Column());
         this.stock = new Stock();
         this.completedSequences = 0;
+        this.completedSequenceSuits = [];
     }
 
     initialize() {

@@ -1,5 +1,5 @@
-// js/rules.js
 export const Rules = {
+
     canMoveCard(card, target) {
         const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
         return ranks.indexOf(card.rank) === ranks.indexOf(target.rank) - 1;
@@ -28,8 +28,13 @@ export const Rules = {
                 fromColumn.getTopCard().isFaceUp = true;
             }
             if (this.isFullSequence(toColumn.cards.slice(-13))) {
+                const completedSuit = toColumn.cards[toColumn.cards.length - 13].suit;
                 toColumn.cards.splice(-13);
                 game.completedSequences++;
+                game.completedSequenceSuits.push(completedSuit);
+                if (toColumn.cards.length > 0) {
+                    toColumn.getTopCard().isFaceUp = true;
+                }
             }
             return true;
         } else {
