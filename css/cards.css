@@ -1,4 +1,4 @@
-.card__slots {
+/* .card__slots {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,4 +32,80 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
+} */
+
+
+
+.stock {
+    display: flex;
+    /* width: 100px; */
+    margin-right: 40px;
+
+    cursor: pointer;
+    align-self: end;
 }
+
+.additional-deck {
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    margin: auto -40px;
+    border: 1px solid black;
+    text-align: center;
+    background: white;
+    background-image: url("/img/card-back-orange.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+
+.columns {
+    display: flex;
+    gap: 30px;
+}
+
+.column {
+    width: 100px;
+    min-height: 200px;
+}
+
+.card {
+    height: 15px;
+    margin: -6px auto;
+    border: 1px solid black;
+    text-align: center;
+    background: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px 10px 0px 0px; 
+}
+
+.card[draggable="true"] {
+    cursor: grab;
+    font-size: 14px;
+    text-align: left;
+    padding: 10px;
+    padding-top: 5px;
+    height: 30px;
+    background-position: 90% 40%;
+    background-repeat: no-repeat;
+    background-size: 15px;
+}
+
+/* background-image: url("/img/spades.png"); */
+
+.column .card:last-child{
+   background-color: red;
+   height: 120px;
+   border-radius: 10px;
+   padding: 10px;
+   font-size: 20px;
+   text-align-last: left;
+
+   background-position: -75% 100%;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+

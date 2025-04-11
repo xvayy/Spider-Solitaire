@@ -13,13 +13,20 @@
     ></script>
 </head>
 <body>
-    <header class="header" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.header.partial.html">
-    </header>
-    <main class="main">
-      <section class="cards" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.cards.partial.html"></section>
-      <section class="additional-cards"  data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.additional-cards.partial.html"></section>
-    </main>
-    <footer class="footer" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.footer.partial.html"></footer>
+  
+  <header class="header" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.header.partial.html">
+  </header>
+  <div class="game-wrapper">
+
+    <div id="game" class="container"></div>
+    <!-- <img  src="img/image.png" alt=""> -->
+  </div>
+  <!-- <main class="main">
+    <section class="cards" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.cards.partial.html"></section>
+    <section class="additional-cards"  data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.additional-cards.partial.html"></section>
+    </main> -->
+  <footer class="footer" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.footer.partial.html"></footer>
+  <script type="module" src="js/main.js"></script>
 </body>
-<script src="./js/index.js"></script>
+
 </html>
