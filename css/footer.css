@@ -9,3 +9,8 @@
     align-items: center;
     gap: 90px;
 }
+
+.footer__item span {
+    margin-left: 5px;
+    color: #ff8300;
+}

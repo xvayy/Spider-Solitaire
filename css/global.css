@@ -1,7 +1,8 @@
     /* Global Styles */ 
 
 @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Bungee+Spice&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Bungee+Spice&family=Signika+Negative:wght@300..700&display=swap');
 html, body {
     scroll-behavior: smooth;
     height: 100%;
@@ -49,4 +50,21 @@ main {
 .container {
     max-width: 1900px;
     margin: auto;
+}
+
+
+.title {
+    font-family: "Bungee Spice", sans-serif;
+    font-size: 34px;
+    font-weight: 300 ;
+
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: "Boldonse", system-ui;
 }

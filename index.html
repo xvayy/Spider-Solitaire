@@ -6,33 +6,153 @@
     <title>Spider Solitaire</title>
     <link rel="shortcut icon" href="./img/spider.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/index.css">
-    <script
-      src="https://unpkg.com/htmx.org@1.9.10"
-      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
-      crossorigin="anonymous"
-    ></script>
 </head>
 <body>
-  
-  <header class="header" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.header.partial.html">
-  </header>
-  <main>
-    <div class="cards-wrapper">
 
-    <div id="cards" class="container"></div>
-    <div id="additional-cards"></div>
+  <header class="header">
+    <div class="container">
+      <div class="header__menu">
+          <ul class="header__menu--items">
+              <li class="header__menu--item">
+                  <button class="game-btn btn">Game</button>
+              </li>
+              <li class="header__menu--item">
+                  <button class="help-btn btn">Help</button>
+              </li>
+          </ul>
+      </div>
 
-      <!-- <img  src="img/image.png" alt=""> -->
+      <div class="modal-window">
+        <div class="modal-window__wrapper">
+          <button class="modal-close">X</button>
+          <div id="menu">
+            <div class="selects">
+              <div class="selects__item">
+                <h2 class="difficulty__title title">Difficulty</h2>
+                <select id="difficulty">
+                    <option value="1">Easy (1 suit)</option>
+                    <option value="2">Medium (2 suits)</option>
+                    <option value="4">Hard (4 suits)</option>
+                </select>
+
+              </div>
+              <div class="selects__item">
+                <h2 class="card-style__title title">Appereance</h2>
+                <select id="card-style">
+                    <option value="orange">Orange</option>
+                    <option value="blue">Blue</option>
+                    <option value="black">Black</option>
+                    <option value="green">Green</option>
+                    <option value="purple">Purple</option>
+                    <option value="red">Red</option>
+                </select>
+                
+              </div>
+            </div>
+
+            <div class="buttons">
+              <button id="new-game">New Game</button>
+              <button id="undo">Undo</button>
+              <button id="save-game">Save Game</button>
+              <button id="load-game">Load saved games</button>
+            </div>
+
+            <div id="saved-games">
+              <h3 class="saved-games__title title">Saved Games</h3>
+              <ul class="saved-games__list"></ul>
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-help">
+        <div class="modal-help__wrapper">
+          <button class="modal-help__close">X</button>
+            
+          <div class="modal-help__how">
+            <h2 class="modal-help__title">How to play?</h2>
+            <p class="modal-help__text">Spider Solitaire is a card game where the goal is to arrange all cards in descending order (from King to Ace) of the same suit and clear them from the tableau</p>
+          </div>
+          <div class="modal-help__rules">
+            <h2 class="modal-help__title">Rules</h2>
+            <ul class="rules__list">
+              <li class="rules__item">
+                <h3>Card Movement</h3>
+                <p>Cards can be placed on a card of the next higher rank (e.g., 6 on 7).</p>
+                <p>A sequence of cards to be moved must be of the same suit and in descending order (e.g., 9♥, 8♥, 7♥).</p>
+              </li>
+              <li class="rules__item">
+                <h3>Empty Columns</h3>
+                <p>An empty column can accept any card or valid sequence.</p>
+              </li>
+              <li class="rules__item">
+                <h3>Revealing Cards</h3>
+                <p>Moving cards that uncover a face-down card automatically flips it face-up.</p>
+              </li>
+              <li class="rules__item">
+                <h3>Stock</h3>
+                <p>When no moves are left, deal 10 new cards from the stock (one per column). All columns must have at least one card to do this.</p>
+              </li>
+              <li class="rules__item">
+                <h3>Completing Sequences</h3>
+                <p>A full sequence (K, Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2, A of one suit) is automatically removed from the tableau.</p>
+              </li>
+              <li class="rules__item">
+                <h3>Difficulty Levels</h3>
+                <p>Easy: 1 suit (e.g., all spades).</p>
+                <p>Medium: 2 suits.</p>
+                <p>Hard: 4 suits (standard game).</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/NlmDS-pRNyI?si=n_d7LC1kCsKsINnY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+          <div class="modal-help__tip">
+            <h2 class="modal-help__title">Tips</h2>
+            <p class="modal-help__text">Plan moves to uncover face-down cards and create empty columns for more flexibility.</p>
+            <p class="modal-help__text">If you make wrong move you can use <span>CTRL + Z</span> keys combination or just press the button "undo" in menu</p>
+          </div>
+        </div>
+      </div>
     </div>
 
+  </header>
+
+  <main>
+    <div class="cards-wrapper">
+      <div id="cards" class="container"></div>
+      <div id="additional-cards"></div>
+    </div>
   </main>
-  
-  <!-- <main class="main">
-    <section class="cards" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.cards.partial.html"></section>
-    <section class="additional-cards"  data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.additional-cards.partial.html"></section>
-    </main> -->
-  <footer class="footer" data-hx-trigger="load" data-hx-swap="outerHTML" data-hx-get="index.footer.partial.html"></footer>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer__items">
+          <li id="score" class="footer__item">
+              <p>Score: <span></span></p>
+          </li>
+          <li id="moves" class="footer__item">
+              <p>Moves: <span></span></p>
+          </li>
+      </ul>
+  </div>
+  </footer>
   <script type="module" src="js/main.js"></script>
+  <!-- <div class="fireworks"></div> -->
+  <!-- jsDelivr  -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script> -->
+
+  <!-- UNPKG -->
+  <!-- <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script> -->
+
+  <!-- Usage -->
+  <!-- <script>
+    const container = document.querySelector('.cards-wrapper')
+    const fireworks = new Fireworks.default(container)
+    fireworks.start()
+  </script> -->
 </body>
 
 </html>
