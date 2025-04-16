@@ -284,7 +284,7 @@ export class Game {
             
             loadButton.style.cursor = 'pointer';
             deleteButton.style.cursor = 'pointer';
-
+            editButton.style.cursor = 'pointer';
 
             text.textContent = `${index + 1}. ${savedGame.name} - ${date.toLocaleString()}`
             li.appendChild(text)

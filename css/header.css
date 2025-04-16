@@ -233,15 +233,15 @@
 }
 
 .load-saved-item__btn {
-  background-image: url("./img/checked.png");
+  background-image: url("../img/checked.png");
 }
 
 .edit-saved-item__btn {
-  background-image: url("./img/editing.png");
+  background-image: url("../img/editing.png");
 }
 
 .delete-saved-item__btn {
-  background-image: url("./img/bin.png");
+  background-image: url("../img/bin.png");
 }
 
 @media (max-width: 600px) {
