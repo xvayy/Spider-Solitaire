@@ -101,10 +101,6 @@ export class EventHandler {
 
             if (isValidTarget && Rules.moveCards(fromColumn, toColumn, data.cardIndex, this.game)) {
                 this.renderer.render();
-                if (this.game.isGameWon()) {
-                    alert('You won!');
-                    this.renderer.renderFireworks();
-                }
             }
         }
     }
@@ -136,13 +132,15 @@ export class EventHandler {
     }
 
     handleUndo(){
-        this.game.undo(this.renderer);
-        this.game.saveCurrentGame();
-        this.handleMenuModalClose();
+        if (this.game.isGameWon() === false){
+            this.game.undo(this.renderer);
+            this.game.saveCurrentGame();
+            this.handleMenuModalClose();
+        }
     }
 
     handleKeyDown(event){
-        if (event.ctrlKey && event.key === 'z') {
+        if (event.ctrlKey && event.key === 'z' && this.game.isGameWon() === false) {
             event.preventDefault();
             this.game.undo(this.renderer);
             console.log("ZZZZZZZZZZZZZZZ");

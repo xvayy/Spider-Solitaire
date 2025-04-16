@@ -7,12 +7,10 @@ export const Rules = {
     isSequence(cards) {
         if (cards.length === 0) return false;
         
-        // Перевіряємо, що всі карти однієї масті
         const firstSuit = cards[0].suit;
         const sameSuit = cards.every(card => card.suit === firstSuit);
         if (!sameSuit) return false;
 
-        // Перевіряємо послідовність рангів
         for (let i = 1; i < cards.length; i++) {
             if (!this.canMoveCard(cards[i], cards[i - 1])) {
                 return false;
@@ -37,6 +35,15 @@ export const Rules = {
         return emptyColumms;
     },
 
+    // findNextMove(game){
+    //     const possibleMoves = [];
+    //     game.columns.forEach((column, index) => {
+    //         if (column.cards.length >= 0){
+
+    //         }
+    //     })
+    // },
+
     moveCards(fromColumn, toColumn, startIndex, game) {
         game.saveState();
         const cardsToMove = fromColumn.removeCards(startIndex);
@@ -57,7 +64,7 @@ export const Rules = {
                     toColumn.getTopCard().isFaceUp = true;
                 }
                 if (game.isGameWon()) {
-                    renderer.renderFireworks();
+                    // renderer.renderFireworks();
                 }
             }
             game.movesCounter++;
