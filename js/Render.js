@@ -30,11 +30,11 @@ export class Renderer {
                 cardDiv.className = 'card';
                 cardDiv.dataset.suit = card.suit;
                 cardDiv.dataset.rank = card.rank;
-                cardDiv.style.backgroundImage = `url(/img/${card.suit}.png)`;
+                cardDiv.style.backgroundImage = `url(./img/${card.suit}.png)`;
                 cardDiv.dataset.index = cardIndex;
                 cardDiv.draggable = card.isFaceUp;
                 cardDiv.innerText = card.isFaceUp ? `${card.rank}` : '';
-                cardDiv.style.backgroundImage = !card.isFaceUp ? `url(/img/card-back-${this.game.cardStyle.value}.png)` : `url(/img/${card.suit}.png)`;
+                cardDiv.style.backgroundImage = !card.isFaceUp ? `url(./img/card-back-${this.game.cardStyle.value}.png)` : `url(./img/${card.suit}.png)`;
                 columnDiv.appendChild(cardDiv);
             });
 
@@ -73,7 +73,7 @@ export class Renderer {
             sequenceDiv.dataset.rank = 'K';
             sequenceDiv.innerText = 'K';
             console.log(suit);
-            sequenceDiv.style.backgroundImage = `url(/img/${suit}.png)`;
+            sequenceDiv.style.backgroundImage = `url(./img/${suit}.png)`;
             sequencesDiv.appendChild(sequenceDiv);
         }
         this.subcontainer.appendChild(sequencesDiv);
@@ -92,17 +92,12 @@ export class Renderer {
     }
     
     renderFireworks() {
-        // document.querySelector(".fireworks").style.display = "block"
-        // const container = document.querySelector('.fireworks')
-        // const fireworks = new Fireworks.default(container)
         this.fireworksContainer.style.display = 'block'
         this.fireworks.start()
-        // document.querySelector(".modal-window").style.display = "block"
     }
 
     pauseRenderingFireworks(){
         this.fireworksContainer.style.display = 'none'
-        // this.fireworks.pause()
     }
 
     render() {
